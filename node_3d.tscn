@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1oiwfminuf1y"]
+
+[ext_resource type="Script" path="res://mesh_instance_3d.gd" id="2_8u0pn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_158w7"]
+sky_top_color = Color(0.212349, 0.353513, 1, 1)
+sky_horizon_color = Color(0.512933, 0.677412, 0.806704, 1)
+sky_curve = 1.33148
+
+[sub_resource type="Sky" id="Sky_xful5"]
+sky_material = SubResource("ProceduralSkyMaterial_158w7")
+
+[sub_resource type="Environment" id="Environment_jsrg1"]
+background_mode = 2
+sky = SubResource("Sky_xful5")
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jsrg1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+script = ExtResource("2_8u0pn")
+radius = 1
+rings = 50
+radial_segments = 15
+barrel_width = 0.65
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.723449, 0.690377, 0, -0.690377, 0.723449, 0, 2.38598, 0)
+sky_mode = 1
